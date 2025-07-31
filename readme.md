@@ -21,7 +21,7 @@ Periodically occurring PIDs:
 
 ### CAN-Bus messages description
 
-| Syntax | Description |
+| Message (HEX) | Origin (ECU) | Byte 0 | Byte 1 | Byte 2 | Byte 3 | Byte 4 | Byte 5 | Byte 6 | Byte 7 |
 | ----------- | ----------- |
 | Header | Title |
 | Paragraph | Text |
