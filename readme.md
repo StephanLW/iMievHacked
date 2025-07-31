@@ -18,3 +18,10 @@ Periodically occurring PIDs:
     10ms (100fps): 236, 285, 288, 373
 
 [1]	(1, 2, 3, 4) Possibly only sent in debug mode.
+
+### CAN-Bus messages description
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
