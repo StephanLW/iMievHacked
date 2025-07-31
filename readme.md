@@ -4,8 +4,9 @@ We used the electronics of a Citroen C-Zero to convert a class VW Bus T2 to elec
 Most information was found in forums and on github, some I found out myself. I will try to quote everything correctly.
 
 ## Fundamentals
-### CAN-Bus Messages and Timing
+### CAN-Bus messages and timing
 created by: [plaes](https://github.com/plaes/i-miev-obd2)
+
 Periodically occurring PIDs:
 
     1000ms (1 fps): 01C [1]
