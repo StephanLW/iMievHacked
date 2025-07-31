@@ -88,6 +88,8 @@ Mostly found on [myimiev Forum](https://myimiev.com/threads/decyphering-imiev-an
 
 Posted by [CZeroOwner](https://myimiev.com/members/czeroowner.2564/) on [myimiev Forum](https://myimiev.com/threads/decyphering-imiev-and-ion-car-can-message-data.763/page-7)
 
+Bytes are counted from byte 1 to byte 8
+
 | Description                         | Units     | PID  | Conversion (from forum rules)                                  | Notes |
 |-------------------------------------|-----------|------|------------------------------------------------------------------|-------|
 | Acceleration                        | m/s^2     | 285  | (byte(6) * 256 + byte(7) - 2000) / 400.0                         | 1     |
