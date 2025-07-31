@@ -20,8 +20,9 @@ Periodically occurring PIDs:
 [1]	(1, 2, 3, 4) Possibly only sent in debug mode.
 
 ### CAN-Bus messages description
+Mostly found on [myimiev Forum](https://myimiev.com/threads/decyphering-imiev-and-ion-car-can-message-data.763/page-7)
 
-| Message (HEX) | Origin (ECU) | Byte 0 | Byte 1 | Byte 2 | Byte 3 | Byte 4 | Byte 5 | Byte 6 | Byte 7 |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| Message (HEX) | timing (FPS) | Origin (ECU) | Byte 0 | Byte 1 | Byte 2 | Byte 3 | Byte 4 | Byte 5 | Byte 6 | Byte 7 |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | Header | Title | Title | Title | Title | Title | Title | Title | Title | Title |
 | Paragraph | Text | Title | Title | Title | Title | Title | Title | Title | Title |
