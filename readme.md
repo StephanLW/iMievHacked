@@ -92,62 +92,63 @@ Bytes are counted from byte 1 to byte 8
 
 | Description                         | Units     | PID  | Conversion (from forum rules)                                  | Notes |
 |-------------------------------------|-----------|------|------------------------------------------------------------------|-------|
-| Acceleration                        | m/s^2     | 285  | (byte(6) * 256 + byte(7) - 2000) / 400.0                         | 1     |
-| Accelerator Pedal                   | number    | 210  | byte(2) * byte(4) / 256.0                                       |       |
-| Air direction control position      | number    | 344  | byte(2) low nibble                                              |       |
-| Air fan speed                       | number    | 344  | byte(2) high nibble                                             |       |
-| Air heater amps                     | amps      | 389  | byte(4) / 2.0                                                   |       |
-| Air max fan                         | on/off    | 344  | byte(3) bit 3                                                   |       |
-| Air recirculation                   | on/off    | 344  | byte(3) bit 2                                                   |       |
-| Air temperature control position    | number    | 344  | byte(1) high nibble                                             |       |
-| Airconditioning on/off              | on/off    | 344  | byte(1) bit 6                                                   |       |
-| Airconditioning level               | number    | 344  | (byte(1) * 256 + byte(2)) / 1000.0                              |       |
-| Airconditioning on/off              | on/off    | 384  | byte(2) bit 5                                                   |       |
-| Aux battery voltage                 | volts     | 374  | (byte(4) * 256 + byte(5)) / 100.0                               |       |
-| Battery amps in                     | amps      | 373  | (byte(4) * 256 + byte(5) - 32768) / 100.0                       |       |
-| Battery amps out calibrated         | amps      | 373  | —                                                               | 6     |
-| Battery voltage                     | volts     | 374  | (byte(4) * 256 + byte(5)) / 10.0                                |       |
-| Brake                               | on/off    | 385  | byte(5)                                                         |       |
-| Brake pressure                      | unknown   | —    | byte(6)                                                         |       |
-| Cell maximum temperature            | °C        | 377  | byte(3) - 50.0                                                  |       |
-| Cell maximum voltage                | volts     | 377  | byte(2) / 100.0                                                 |       |
-| Cell minimum temperature            | °C        | 377  | byte(5) - 50.0                                                  |       |
-| Cell minimum voltage                | volts     | 377  | byte(4) / 100.0                                                 |       |
+| Acceleration                        | m/s^2     | 285  | (byte(1) * 256 + byte(2) - 2000) / 400.0                         | 1     |
+| Accelerator Pedal                   | %         | 210  | 100 * byte(3) / 256.0                                       |       |
+| Air direction control position      | number    | 3A4  | byte(2) low nibble                                              |       |
+| Air fan speed                       | number    | 3A4  | byte(2) high nibble                                             |       |
+| Air heater amps                     | amps      | 384  | byte(5) / 10.0                                                   |       |
+| Air max fan                         | on/off    | 3A4  | byte(1) bit 32                                                   |       |
+| Air recirculation                   | on/off    | 3A4  | byte(1) bit 64                                                   |       |
+| Air temperature control position    | number    | 3A4  | byte(1) low nibble                                             |       |
+| Airconditioning amps                | amps      | 384  | (byte(1) * 256 + byte(2))/1000.0                                                  |       |
+| Airconditioning on/off              | on/off    | 3A4  | byte(1) bit 128                                                   |       |
+| Battery 100% capacity               | amp-hours | 373  | byte(7) / 2.0                       |       |
+| Battery amps in                     | amps      | 373  | (byte(3) * 256 + byte(4) - 32768) / 100.0                       |       |
+| Battery amps out calibrated         | amps      | 373  | BatteryAmps + 0.66                                                               | 6     |
+| Battery voltage                     | volts     | 373  | (byte(5) * 256 + byte(6)) / 10.0                                |       |
+| Brake                               | on/off    | 231  | byte(5)                                                         |       |
+| Brake pressure                      | bar?      | 208  | byte(4)                                                         |       |
+| Cell maximum temperature            | °C        | 374  | byte(5) - 50.0                                                  |       |
+| Cell maximum voltage                | volts     | 373  | (byte(1) + 210) / 100.0                                                 |       |
+| Cell minimum temperature            | °C        | 374  | byte(6) - 50.0                                                  |       |
+| Cell minimum voltage                | volts     | 373  | (byte(2) + 210) / 100.0                                                 |       |
 | Chademo connected                   | on/off    | 697  | byte(1)                                                         |       |
 | Chademo current                     | amps      | 697  | byte(3)                                                         |       |
-| Charging 12V battery (high voltage) | amps      | 389  | byte(3) / 2.0                                                   | 2     |
-| Charging unit amps to mains        | amps      | 389  | byte(5)                                                         |       |
-| Charging unit amps to battery      | amps      | 389  | byte(4)                                                         |       |
-| Charging unit temperature 1        | °C        | 38D  | byte(5) - 50.0                                                  |       |
-| Charging unit temperature 2        | °C        | 38D  | byte(6) - 50.0                                                  |       |
-| Charging unit volts to mains       | volts     | 389  | byte(2)                                                         |       |
-| Charging unit volts to battery     | volts     | 389  | byte(1)                                                         |       |
-| Gear (P, R, N, D)                   | —         | 2F2  | 2 = P, 1 = Reverse, 4 = Drive                                   | 8     |
-| Ignition (ready and not ready)     | on/off    | 412  | (byte(2) & 254) != 0                                            |       |
-| Lights front fog on                 | on/off    | 424  | byte(3) bit 2                                                   |       |
-| Lights headlights                   | on/off    | 424  | byte(3) bit 3                                                   |       |
+| Chademo percent                     | %         | 697  | byte(2)                                                         |       |
+| Charging 12V battery (high voltage) | amps      | 384  | byte(4) / 100.0                                                   | 2     |
+| Charging unit amps from mains        | amps      | 389  | byte(7) / 10.0                                                         |       |
+| Charging unit amps to battery      | amps      | 389  | byte(3) / 10.0                                                         |       |
+| Charging unit temperature 1        | °C        | 389  | byte(4) - 50.0                                                  |       |
+| Charging unit temperature 2        | °C        | 389  | byte(5) - 50.0                                                  |       |
+| Charging unit volts from mains       | volts     | 389  | byte(2)                                                         |       |
+| Charging unit volts to battery     | volts     | 389  | 2 * (byte(1) + 0.5)                                                         |       |
+| Gear (P, R, N, D)                   | —         | 236  | 3 = P/N??, 1 = Reverse, 4 = Drive                                   | 8     |
+| Key on (ready and not ready)     | on/off    | 412  | if(byte(1)=254) then on(1) else off(0)                                            |       |
+| Lights front fog                 | on/off    | 424  | byte(1) bit 8                                                   |       |
+| Lights headlights                   | on/off    | 424  | byte(2) bit 32                                                   |       |
 | Lights Highbeams                    | on/off    | 424  | byte(3) bit 4                                                   |       |
-| Lights Left                         | on/off    | 424  | byte(3) bit 5                                                   |       |
-| Lights Parking                      | on/off    | 424  | byte(3) bit 1                                                   |       |
-| Lights Right                        | on/off    | 424  | byte(3) bit 6                                                   |       |
-| Motor current                       | amps      | 6D0  | (byte(6) * 256 + byte(5) - 5000) / 20.0                         | 3     |
-| Motor rpm                           | rpm       | 6D0  | (byte(4) * 256 + byte(3)) - 10000                              |       |
-| Motor temperature 0                | °C        | 6D1  | byte(2) - 50                                                    |       |
-| Motor temperature 1                | °C        | 6D2  | byte(2) - 50                                                    |       |
-| Motor temperature 2                | °C        | 6D3  | byte(2) - 50                                                    |       |
-| Motor temperature 3                | °C        | 6D4  | byte(2) - 50                                                    |       |
-| Motor temperature 4                | °C        | 6D5  | (byte(4) * 256 + byte(5)) / 10.0 - 50                           | 7     |
-| Outdoor air temperature             | °C        | 6D6  | byte(2) - 50                                                    |       |
-| Rear window defrost                 | on/off    | 424  | byte(3) bit 7                                                   |       |
-| Regenerative amps (negative)       | amps      | 373  | —                                                               |       |
-| Regeneration range                  | —         | 346  | (byte(1) * 256 + byte(2)) / 32.934                             | 1     |
-| Rotation ESC                        | —         | 288  | byte(6)                                                         |       |
-| Speed                               | km/h      | 215  | byte(3) / 2.0                                                   |       |
-| Speed wheel 0                       | km/h      | 208  | byte(1) / 2.0                                                   |       |
-| Speed wheel 1                       | km/h      | 208  | byte(3) / 2.0                                                   |       |
-| Speed wheel 2                       | km/h      | 208  | byte(5) / 2.0                                                   |       |
-| Speed wheel 3                       | km/h      | 208  | byte(7) / 2.0                                                   |       |
-| State of Charge 1                   | %         | 346  | byte(5) / 2.0                                                   |       |
-| State of Charge 2                   | %         | 296  | byte(6)                                                         |       |
-| Steering wheel position             | degrees   | 236  | (byte(3) * 256 + byte(2) - 4096) / 30.0                         | 1     |
+| Lights Parking                      | on/off    | 424  | byte(2) bit 64                                                   |       |
+| Lights Rear Fog                        | on/off    | 424  | byte(1) bit 16                                                   |       |
+| Motor current                       | amps      | 696  | (byte(3) * 256 + byte(4) - 500) / 20.0                         | 3     |
+| Motor rpm                           | rpm       | 298  | byte(7) * 256 + byte(8) - 10000                              |       |
+| Motor temperature 0                | °C        | 298  | byte(1) - 50                                                    |       |
+| Motor temperature 1                | °C        | 298  | byte(2) - 50                                                    |       |
+| Motor temperature 2                | °C        | 298  | byte(3) - 50                                                    |       |
+| Motor temperature 3                | °C        | 298  | byte(4) - 50                                                    |       |
+| Odometer                            | km        | 412  | (byte(3) * 256 + byte(4)) * 256 + byte(5)                           | 7     |
+| Outdoor air temperature             | °C        | 286  | byte(4) - 50                                                    |       |
+| Rear window defrost                 | on/off    | 424  | byte(7) bit 8                                                   |       |
+| Regenerative amps (negative)       | amps      | 696  | (byte(7) * 256 + byte(8) - 10000) / 5.0                                                               |       |
+| Remaining range                  | km         | 346  | byte(8)                             | 1     |
+| Rotation ESC                        | %         | 149  | (byte(6) * 256 + byte(5) - 32934) / 32.934                                                         |       |
+| Speed                               | km/h      | 215  | (256 * byte(1) + byte(2)) / 128.0                                                   |       |
+| Speed displayed                       | km/h      | 412  | byte(2)                                                   |       |
+| Speed wheel 1                       | km/h      | 200  | byte(3) * 256 + byte(4) - 49152 / 19.0                                                   |       |
+| Speed wheel 2                       | km/h      | 200  | byte(5) * 256 + byte(6) - 49152 / 19.0                                                    |       |
+| Speed wheel 3                       | km/h      | 208  | byte(5) * 256 + byte(6) - 49152 / 19.0                                                    |       |
+| Speed wheel 4                       | km/h      | 208  | byte(7) * 256 + byte(8) - 49152 / 19.0                                                    |       |
+| State of Charge 1                   | %         | 374  | (byte(1) - 10.0) / 2.0                                                  |       |
+| State of Charge 2                   | %         | 374  | (byte(2) - 10.0) / 2.0                                                         |       |
+| Steering wheel position             | degrees   | 236  | (byte(1) * 256 + byte(2) - 4096) / 30.0                         | 1     |
+| Windshield wipers             | on/off   | 424  | byte(2) bit 8                         | 1     |
 
