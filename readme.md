@@ -168,5 +168,6 @@ To change the charging and regenerative braking current it's possible to manipul
 Normaly, the car charges the battery till -24 °C:
 |      test                    |  test    | 
 |-------------------------------------|-----------|
-|| Temperature            | max. current           |                |      | 
-||------------|-----------|                |      |
+| <img width="331" height="294" alt="Bildschirmfoto 2025-08-05 um 23 22 15" src="https://github.com/user-attachments/assets/d455c6cc-3274-43b5-8453-d4adda832c38" />
+              |  <img width="653" height="369" alt="Bildschirmfoto 2025-08-05 um 23 09 38" src="https://github.com/user-attachments/assets/295cfbd1-5917-400a-94fe-0f0842985363" />
+    |
