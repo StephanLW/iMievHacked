@@ -162,3 +162,11 @@ Bytes are counted from byte 0 to byte 7
 ### Change Charging Voltage
 If you want to change the maximum charging-voltage, you can use the "cell maximum voltage" for that. It seems as if the charger gets the charging current command from the ECU and alway tries to charge to 4.1 volt on the max cell. If you only want to charge till 3.9 Volt, you can use the can bridge and change the "cell maximum voltage" by using
 `code`
+
+### Change max. regenerative current/charging current
+To change the charging and regenerative braking current it's possible to manipulate the min or max temperature PID. That is very important if you habe upgraded the battery to for example CATL 93 Ah cells, because these cells are not made for charging below 0 °C and can be damaged. 
+Normaly, the car charges the battery till -24 °C:
+|      test                    |  test    | 
+|-------------------------------------|-----------|
+|| Temperature            | max. current           |                |      | 
+||------------|-----------|                |      |
