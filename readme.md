@@ -157,3 +157,8 @@ Bytes are counted from byte 0 to byte 7
 | Steering wheel position             | degrees   | 236  | (byte(0) * 256 + byte(1) - 4096) / 30.0                         | 1     |
 | Windshield wipers             | on/off   | 424  | byte(1) bit 8                         | 1     |
 
+## Hacking/Customisation
+
+### Change Charging Voltage
+If you want to change the maximum charging-voltage, you can use the "cell maximum voltage" for that. It seems as if the charger gets the charging current command from the ECU and alway tries to charge to 4.1 volt on the max cell. If you only want to charge till 3.9 Volt, you can use the can bridge and change the "cell maximum voltage" by using
+`code`
