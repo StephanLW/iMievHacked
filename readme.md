@@ -123,6 +123,7 @@ Bytes are counted from byte 1 to byte 8
 | Charging unit volts from mains       | volts     | 389  | byte(2)                                                         |       |
 | Charging unit volts to battery     | volts     | 389  | 2 * (byte(1) + 0.5)                                                         |       |
 | Gear (P, R, N, D)                   | —         | 236  | 3 = P/N??, 1 = Reverse, 4 = Drive                                   | 8     |
+| **Insulation fault**                   | —         | **5A1**  | **No fault: 00(HEX) New fault: 30,3C?,34? No fault, but saved faultcode: 14 New fault with saved fault: 1C?**|   |
 | Key on (ready and not ready)     | on/off    | 412  | if(byte(1)=254) then on(1) else off(0)                                            |       |
 | Lights front fog                 | on/off    | 424  | byte(1) bit 8                                                   |       |
 | Lights headlights                   | on/off    | 424  | byte(2) bit 32                                                   |       |
