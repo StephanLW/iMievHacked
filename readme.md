@@ -126,7 +126,7 @@ Bytes are counted from byte 0 to byte 7
 | Charging unit temperature 2        | °C        | 389  | byte(4) - 50.0                                                  |       |
 | Charging unit volts from mains       | volts     | 389  | byte(1)                                                         |       |
 | Charging unit volts to battery     | volts     | 389  | 2 * (byte(0) + 0.5)                                                         |       |
-| Gear (P, R, N, D)                   | —         | 236  | 3 = P/N??, 1 = Reverse, 4 = Drive                                   | 8     |
+| **Gear (P, R, N, D, B, C)**                   | **—**         | **418**  | **Byte(0) Decimal: P=80, R=82, N=78, D=68, B=131 C=50**                                   | 8     |
 | **Insulation fault**                   | —         | **5A1**  | **Byte(0) No fault: 00(HEX) New fault: 30,3C?,34? No fault, but saved faultcode: 14 New fault with saved fault: 1C?**|   |
 | Key on (ready and not ready)     | on/off    | 412  | if(byte(0)=254) then on(1) else off(0)                                            |       |
 | Lights front fog                 | on/off    | 424  | byte(0) bit 8                                                   |       |
