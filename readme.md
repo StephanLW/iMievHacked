@@ -166,8 +166,7 @@ If you want to change the maximum charging-voltage, you can use the "cell maximu
 ### Change max. regenerative current/charging current
 To change the charging and regenerative braking current it's possible to manipulate the min or max temperature PID. That is very important if you habe upgraded the battery to for example CATL 93 Ah cells, because these cells are not made for charging below 0 °C and can be damaged. 
 Normaly, the car charges the battery till -24 °C:
-|      test                    |  test    | 
+| Table                          |  Graph    | 
 |-------------------------------------|-----------|
 | <img width="331" height="294" alt="Bildschirmfoto 2025-08-05 um 23 22 15" src="https://github.com/user-attachments/assets/d455c6cc-3274-43b5-8453-d4adda832c38" />
-              |  <img width="653" height="369" alt="Bildschirmfoto 2025-08-05 um 23 09 38" src="https://github.com/user-attachments/assets/295cfbd1-5917-400a-94fe-0f0842985363" />
-    |
+   <img width="653" height="369" alt="Bildschirmfoto 2025-08-05 um 23 09 38" src="https://github.com/user-attachmentsassets/295cfbd1-5917-400a-94fe-0f0842985363" /> |
