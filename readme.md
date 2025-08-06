@@ -3,6 +3,9 @@ We used the electronics of a Citroen C-Zero to convert a class VW Bus T2 to elec
 
 Most information was found in forums and on github, some I found out myself. I will try to quote everything correctly.
 
+Everything you do is on your own risk. I am not responsible if you damage or burn down your car using the provided code :)
+Always be aware that you can change or bypass safety features by manipulating the CAN-messages and that this can lead to burning batteries.
+
 ## Fundamentals
 ### CAN-Bus messages and timing
 created by: [plaes](https://github.com/plaes/i-miev-obd2)
@@ -157,14 +160,20 @@ Bytes are counted from byte 0 to byte 7
 | Steering wheel position             | degrees   | 236  | (byte(0) * 256 + byte(1) - 4096) / 30.0                         | 1     |
 | Windshield wipers             | on/off   | 424  | byte(1) bit 8                         | 1     |
 
+## Technical tools
+I use an arduino CAN-bridge to manipulate the CAN-messages. First, I had many problems with to slow transmitting rates and thus errors with the car. 
+Then I discovered, that the used MCP2515 library has a huge impact on the transmitting-rate ([Performance Testing on Youtube]( https://www.youtube.com/watch?v=z1H2rj_VaRw&t=301s&pp=ygUZYXJkdWlubyBjYW4gbGlicmFyeSBzcGVlZA%3D%3D)) so i now use the [autowp-library](https://github.com/autowp/arduino-mcp2515) and everything works fine.
+Just use an Arduino and two MCP2515 CAN Bus Shields and connect the ground to the car.
+If you want to manipulate messages from the BMU, you have to cut the CAN-Bus wires between the BMU and the rest of the CAN-Bus wiring. You find the BMU under the rear seats on the left side.
+BILD BILD BILD!!!!!
+
 ## Hacking/Customisation
 
 ### Change Charging Voltage
-If you want to change the maximum charging-voltage, you can use the "cell maximum voltage" for that. It seems as if the charger gets the charging current command from the ECU and alway tries to charge to 4.1 volt on the max cell. If you only want to charge till 3.9 Volt, you can use the can bridge and change the "cell maximum voltage" by using
-`code`
+If you want to change the maximum charging-voltage, you can use the "cell maximum voltage" for that. It seems as if the charger gets the charging current command from the ECU and alway tries to charge to 4.1 volt on the max cell. If you only want to charge till 3.9 Volt, you can use the CAN-bridge and change the "cell maximum voltage" by using the provided code.
 
 ### Change max. regenerative current/charging current
-To change the charging and regenerative braking current it's possible to manipulate the min or max temperature PID. That is very important if you habe upgraded the battery to for example CATL 93 Ah cells, because these cells are not made for charging below 0 °C and can be damaged. 
+To change the charging and regenerative braking current it's possible to manipulate the battery min or max temperature PID. That is very important if you have upgraded the battery to for example CATL 93 Ah cells, because these cells are not made for charging below 0 °C and can be damaged. 
 Normaly, the car charges the battery till -24 °C:
 | Table "Regen current"                         |  Graph "Regen current"    | 
 |-------------------------------------|-----------|
@@ -175,3 +184,4 @@ Normaly, the car charges the battery till -24 °C:
 |-------------------------------------|-----------|
 | <img width="331" height="294" alt="Bildschirmfoto 2025-08-06 um 15 23 50" src="https://github.com/user-attachments/assets/23e6b7be-eecd-4174-b8dc-c9f8f283f046" />| <img width="520" height="294" alt="Bildschirmfoto 2025-08-06 um 15 25 37" src="https://github.com/user-attachments/assets/abab608b-695c-42f3-99b7-c210a2a95886" />
  |
+You can use the provided code to change the CAN-messages. Be carefull: If you change the bytes, the battery is no longer supervised and and can overheat or overcool. So change the code for your needs and always be sure, that the battery temperature stays on a save level!
