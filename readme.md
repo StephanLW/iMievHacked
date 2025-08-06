@@ -173,6 +173,5 @@ Normaly, the car charges the battery till -24 °C:
 
 | Table "Chademo current"                         |  Graph "Chademo current"    | 
 |-------------------------------------|-----------|
-| <img width="331" height="294" alt="Bildschirmfoto 2025-08-06 um 15 23 50" src="https://github.com/user-attachments/assets/23e6b7be-eecd-4174-b8dc-c9f8f283f046" />
- | <img width="520" height="294" alt="Bildschirmfoto 2025-08-06 um 15 25 37" src="https://github.com/user-attachments/assets/abab608b-695c-42f3-99b7-c210a2a95886" />
+| <img width="331" height="294" alt="Bildschirmfoto 2025-08-06 um 15 23 50" src="https://github.com/user-attachments/assets/23e6b7be-eecd-4174-b8dc-c9f8f283f046" />| <img width="520" height="294" alt="Bildschirmfoto 2025-08-06 um 15 25 37" src="https://github.com/user-attachments/assets/abab608b-695c-42f3-99b7-c210a2a95886" />
  |
