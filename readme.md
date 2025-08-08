@@ -176,6 +176,7 @@ Just use an Arduino and two MCP2515 CAN Bus Shields and connect the ground to th
 |INT|-|-|
 
 If you want to manipulate messages from the BMU, you have to cut the CAN-Bus wires between the BMU and the rest of the CAN-Bus wiring. You find the BMU under the rear seats on the left side.
+The problem now is, that you also receive the manipulated data at the OBD2 port. Another idea is to install the can Bridge in close to the receiving ECU (which would be the ECU1 in most cases). But i have not tried that. Maybe I will add it in the future. 
 
 |                        |     | 
 |-------------------------------------|-----------|
