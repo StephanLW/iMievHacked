@@ -12,13 +12,13 @@ created by: [plaes](https://github.com/plaes/i-miev-obd2)
 
 Periodically occurring PIDs:
 
-    1000ms (1 fps): 01C [1]
-    200ms (5 fps): 568 [1]
-    100ms (10 fps): 101, 286, 298, 29A, 2F2, 374, 375, 384, 385, 389 [1], 38A [1], 3A4, 408, 412, 695, 696, 697, 6FA, 75A, 75B
-    50ms (20 fps): 38D, 564, 565, 5A1, 6D0, 6D1, 6D2, 6D3, 6D4, 6D5, 6D6, 6DA
-    40ms (25 fps): 424, 6E1, 6E2, 6E3, 6E4
-    20ms (50 fps): 119, 149, 156, 200, 208, 210, 212, 215, 231, 300, 308, 325, 346, 418
-    10ms (100fps): 236, 285, 288, 373
+1000ms (1 fps): 01C [1]
+200ms (5 fps): 568 [1]
+100ms (10 fps): 101, 286, 298, 29A, 2F2, 374, 375, 384, 385, 389 [1], 38A [1], 3A4, 408, 412, 695, 696, 697, 6FA, 75A, 75B
+50ms (20 fps): 38D, 564, 565, 5A1, 6D0, 6D1, 6D2, 6D3, 6D4, 6D5, 6D6, 6DA
+40ms (25 fps): 424, 6E1, 6E2, 6E3, 6E4
+20ms (50 fps): 119, 149, 156, 200, 208, 210, 212, 215, 231, 300, 308, 325, 346, 418
+10ms (100fps): 236, 285, 288, 373
 
 [1]	(1, 2, 3, 4) Possibly only sent in debug mode.
 
@@ -186,6 +186,7 @@ The problem now is, that you also receive the manipulated data at the OBD2 port.
 
 ### Diagbox/Lexia/MUT-3
 Every carmaker uses its own diagnosis-system to read, delete and change faultcodes and parameters. It's very helpfull to have such a thing. For the Citroen C-Zero you need a diagbox. I'm using a (probably) fake device from ebay which costs me around 100 Euro 7 years ago. For Peugeot you can (as far as I know) use the same device and software, as long as it has the "Lexia" name on it. 
+
 TIPP: I first tried to use the DVDs to install the cracked software but it was not working and maybe I got some viruses from these DVDs. After that I bought a ready to use virtual machine with windows XP and the diagnosis software installed. That works fine for me. Always store a unused copy of the virtual machine, if there occures a activation fault or something else. Then you can delete it and use the copy.
 
 ![proxy-image](https://github.com/user-attachments/assets/d217e09e-a6c6-4f8c-8634-b439c0cce99d)
