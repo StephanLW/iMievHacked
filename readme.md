@@ -205,6 +205,9 @@ For Mitsubishi you need the MUT-3 device. I have no experiences with this system
 
 ### Change Charging Voltage
 If you want to change the maximum charging-voltage, you can use the "cell maximum voltage" for that. It seems as if the charger gets the charging current command from the ECU and alway tries to charge to 4.1 volt on the max cell. If you only want to charge till 3.9 Volt, you can use the CAN-bridge and change the "cell maximum voltage" by using the provided code.
+On a regular AC-charging session the charger uses the CCCV procedure, that means it first uses a constant current and if it reaches the maximum voltage, the current drops. My experiments showed, that the current has to drop under 1 A to finish the charging-session. 
+If you reduce the charging voltage, this 1 A criteria is no longer valid. The battery is charged as long as the current is over 0 A. If it drops unter 0 A for a few seconds (which is possible, because the DCDC-converter uses energy from the battery) the charging ends. I have checked the fault codes and i could not find anything so this method of turning off seems ok. 
+As far as I know it's only possible to reduce the charging voltage. There is a 370 V shutdown-criteria for the charger on PID 0x286 (have a look at [openinverter Forum](https://openinverter.org/wiki/Mitsubishi_Outlander_DCDC_OBC#CANBus_Messages) for more information). I don't know, if its possible to manipulate that. 
 
 ### Change max. regenerative current/charging current
 To change the charging and regenerative braking current it's possible to manipulate the battery min or max temperature PID. That is very important if you have upgraded the battery to for example CATL 93 Ah cells, because these cells are not made for charging below 0 °C and can be damaged. 
