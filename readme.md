@@ -37,15 +37,15 @@ Mostly found on [myimiev Forum](https://myimiev.com/threads/decyphering-imiev-an
 |---------------|--------------|--------------|--------|--------|--------|--------|--------|--------|--------|--------|
 | 01C           | 1            | -            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 101           | 10           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
-| 119           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
+| 119           | 50           | ABS/ES       | —      | —      | —      | —      | —      | —      | —      | —      |
 | 149           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 156           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
-| 200           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
-| 208           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
+| 200           | 50           | ABS/ES       | —      | —      | —      | —      | —      | —      | —      | —      |
+| 208           | 50           | ABS/ES       | —      | —      | —      | —      | —      | —      | —      | —      |
 | 210           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 212           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
-| 215           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
-| 231           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
+| 215           | 50           | ABS/ES       | —      | —      | —      | —      | —      | —      | —      | —      |
+| 231           | 50           | ABS/ES       | —      | —      | —      | —      | —      | —      | —      | —      |
 | 236           | 100          | —            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 285           | 100          | —            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 286           | 10           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
@@ -53,7 +53,7 @@ Mostly found on [myimiev Forum](https://myimiev.com/threads/decyphering-imiev-an
 | 298           | 10           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 29A           | 10           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 2F2           | 10           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
-| 300           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
+| 300           | 50           | ABS/ES       | —      | —      | —      | —      | —      | —      | —      | —      |
 | 308           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 325           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
 | 346           | 50           | —            | —      | —      | —      | —      | —      | —      | —      | —      |
@@ -210,7 +210,7 @@ If you reduce the charging voltage, this 1 A criteria is no longer valid. The ba
 As far as I know it's only possible to reduce the charging voltage. There is a 370 V shutdown-criteria for the charger on PID 0x286 (have a look at [openinverter Forum](https://openinverter.org/wiki/Mitsubishi_Outlander_DCDC_OBC#CANBus_Messages) for more information). I don't know, if its possible to manipulate that. 
 
 ### Change max. regenerative current/charging current
-To change the charging and regenerative braking current it's possible to manipulate the battery min or max temperature PID. That is very important if you have upgraded the battery to for example CATL 93 Ah cells, because these cells are not made for charging below 0 °C and can be damaged. 
+To change the charging and regenerative braking current it's possible to manipulate the battery min or max temperature PID (0x374). That is very important if you have upgraded the battery to for example CATL 93 Ah cells, because these cells are not made for charging below 0 °C and can be damaged. 
 Normaly, the car charges the battery till -24 °C:
 | Table "Regen current"                         |  Graph "Regen current"    | 
 |-------------------------------------|-----------|
@@ -222,3 +222,21 @@ Normaly, the car charges the battery till -24 °C:
 | <img width="331" height="294" alt="Bildschirmfoto 2025-08-06 um 15 23 50" src="https://github.com/user-attachments/assets/23e6b7be-eecd-4174-b8dc-c9f8f283f046" />| <img width="520" height="294" alt="Bildschirmfoto 2025-08-06 um 15 25 37" src="https://github.com/user-attachments/assets/abab608b-695c-42f3-99b7-c210a2a95886" />
  |
 You can use the provided code to change the CAN-messages. Be carefull: If you change the bytes, the battery is no longer supervised and and can overheat or overcool. So change the code for your needs and always be sure, that the battery temperature stays on a save level!
+
+For charging via Chademo it is only possbile in 0A, 10A, 25A, 50A and 125A (and possibly 100A if you set the temperature to 50 °C, have a look at the LEV50N datasheet -> 100A not tested yet). 
+
+The regen-current on the other hand is changeable according to the above shown linear function.
+
+Be carfull if you for example change the regen-current from 125A to 0A very quickly, because the change feels not very smooth. In addition the driving becomes unsafe then, because the regen-braking takes place on the first half of the brakepedal movement and then kicks in the mechanical brake. So if you change the regen-current quickly you have to press the pedal even more to get the same braking performance -> it can be irritating while driving. 
+
+### Simulate the ESP/ABS-ECU
+For our conversion we tried to eliminate all sensors and devices, which we don't need. The VW T2 has ne ABS or ESP so we did not install the ECU (which is included in the valve-block). The car worked with hat, but has very reduced power and works in a kind of "emergency-mode". To solve that problem, I copied the CAN-messages from a original Citroen C-Zero and put them in the CAN-Bus of the Bus -> now the car has full power :) 
+
+|CAN-message HEX|byte 0|byte 1|byte 1|byte 1|byte 1|byte 1|byte 1|byte 1| 
+|-------------------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|119|0|0|0|0|0|0|0|0|
+|200|0|3|192|0|192|0|255|255|
+|208|0|32|96|2|192|0|192|0|
+|215|0|0|0|166|0|165|0|0|
+|231|0|0|0|0|2|0|0|0|
+|300|0|27|31|255|135|208|255|255|
