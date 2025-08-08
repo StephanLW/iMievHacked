@@ -165,7 +165,12 @@ I use an arduino CAN-bridge to manipulate the CAN-messages. First, I had many pr
 Then I discovered, that the used MCP2515 library has a huge impact on the transmitting-rate ([Performance Testing on Youtube]( https://www.youtube.com/watch?v=z1H2rj_VaRw&t=301s&pp=ygUZYXJkdWlubyBjYW4gbGlicmFyeSBzcGVlZA%3D%3D)) so i now use the [autowp-library](https://github.com/autowp/arduino-mcp2515) and everything works fine.
 Just use an Arduino and two MCP2515 CAN Bus Shields and connect the ground to the car.
 If you want to manipulate messages from the BMU, you have to cut the CAN-Bus wires between the BMU and the rest of the CAN-Bus wiring. You find the BMU under the rear seats on the left side.
-BILD BILD BILD!!!!!
+
+|                        |     | 
+|-------------------------------------|-----------|
+|![IMG_20250807_210944 Bearbeitet](https://github.com/user-attachments/assets/a8348ba4-96c2-43db-ab68-5add5cdf1ccc)
+ | ![IMG_20250807_210956 Kopie](https://github.com/user-attachments/assets/6113c815-8952-4030-9fb4-ac29af269f82)
+|
 
 ## Hacking/Customisation
 
