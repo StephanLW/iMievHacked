@@ -168,9 +168,7 @@ If you want to manipulate messages from the BMU, you have to cut the CAN-Bus wir
 
 |                        |     | 
 |-------------------------------------|-----------|
-|![IMG_20250807_210944 Bearbeitet](https://github.com/user-attachments/assets/a8348ba4-96c2-43db-ab68-5add5cdf1ccc)
- | ![IMG_20250807_210956 Kopie](https://github.com/user-attachments/assets/6113c815-8952-4030-9fb4-ac29af269f82)
-|
+|![IMG_20250807_210944 Bearbeitet](https://github.com/user-attachments/assets/a8348ba4-96c2-43db-ab68-5add5cdf1ccc)|![IMG_20250807_210956 Kopie](https://github.com/user-attachments/assets/6113c815-8952-4030-9fb4-ac29af269f82)|
 
 ## Hacking/Customisation
 
