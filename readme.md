@@ -161,6 +161,8 @@ Bytes are counted from byte 0 to byte 7
 | Windshield wipers             | on/off   | 424  | byte(1) bit 8                         | 1     |
 
 ## Technical tools
+
+### CAN-Bridge
 I use an arduino CAN-bridge to manipulate the CAN-messages. First, I had many problems with to slow transmitting rates and thus errors with the car. 
 Then I discovered, that the used MCP2515 library has a huge impact on the transmitting-rate ([Performance Testing on Youtube]( https://www.youtube.com/watch?v=z1H2rj_VaRw&t=301s&pp=ygUZYXJkdWlubyBjYW4gbGlicmFyeSBzcGVlZA%3D%3D)) so i now use the [autowp-library](https://github.com/autowp/arduino-mcp2515) and everything works fine.
 Just use an Arduino and two MCP2515 CAN Bus Shields and connect the ground to the car.
@@ -182,6 +184,14 @@ The problem now is, that you also receive the manipulated data at the OBD2 port.
 |-------------------------------------|-----------|
 |![IMG_20250807_210944 Bearbeitet](https://github.com/user-attachments/assets/a8348ba4-96c2-43db-ab68-5add5cdf1ccc)|![IMG_20250807_210956 Kopie](https://github.com/user-attachments/assets/6113c815-8952-4030-9fb4-ac29af269f82)|
 
+### Diagbox/Lexia/MUT-3
+Every carmaker uses its own diagnosis-system to read, delete and change faultcodes and parameters. It's very helpfull to have such a thing. For the Citroen C-Zero you need a diagbox. I'm using a (probably) fake device from ebay which costs me around 100 Euro 7 years ago. For Peugeot you can (as far as I know) use the same device and software, as long as it has the "Lexia" name on it. 
+TIPP: I first tried to use the DVDs to install the cracked software but it was not working and maybe I got some viruses from these DVDs. After that I bought a ready to use virtual machine with windows XP and the diagnosis software installed. That works fine for me. Always store a unused copy of the virtual machine, if there occures a activation fault or something else. Then you can delete it and use the copy.
+
+![proxy-image](https://github.com/user-attachments/assets/d217e09e-a6c6-4f8c-8634-b439c0cce99d)
+
+
+For Mitsubishi you need the MUT-3 device. I have no experiences with this system. 
 
 ## Hacking/Customisation
 
