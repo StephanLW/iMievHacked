@@ -232,7 +232,7 @@ Be carfull if you for example change the regen-current from 125A to 0A very quic
 ### Simulate the ESP/ABS-ECU
 For our conversion we tried to eliminate all sensors and devices, which we don't need. The VW T2 has ne ABS or ESP so we did not install the ECU (which is included in the valve-block). The car worked with hat, but has very reduced power and works in a kind of "emergency-mode". To solve that problem, I copied the CAN-messages from a original Citroen C-Zero and put them in the CAN-Bus of the Bus -> now the car has full power :) 
 
-|CAN-message HEX|byte 0|byte 1|byte 1|byte 1|byte 1|byte 1|byte 1|byte 1| 
+|CAN-message HEX|byte 0|byte 1|byte 2|byte 3|byte 4|byte 5|byte 6|byte 7| 
 |-------------------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 |119|0|0|0|0|0|0|0|0|
 |200|0|3|192|0|192|0|255|255|
