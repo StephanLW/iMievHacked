@@ -31,7 +31,7 @@ Periodically occurring PIDs:
 
 ### CAN-Bus messages description 1
 Mostly found on [myimiev Forum](https://myimiev.com/threads/decyphering-imiev-and-ion-car-can-message-data.763/page-7)
-(Incomplete)
+(Incomplete). Origin added by myself. 
 
 | Message (HEX) | timing (FPS) | Origin (ECU) | Byte 0 | Byte 1 | Byte 2 | Byte 3 | Byte 4 | Byte 5 | Byte 6 | Byte 7 |
 |---------------|--------------|--------------|--------|--------|--------|--------|--------|--------|--------|--------|
@@ -136,7 +136,7 @@ Bytes are counted from byte 0 to byte 7
 | Charging unit temperature 2        | °C        | 389  | byte(4) - 50.0                                                  |       |
 | Charging unit volts from mains       | volts     | 389  | byte(1)                                                         |       |
 | Charging unit volts to battery     | volts     | 389  | 2 * (byte(0) + 0.5)                                                         |       |
-| **Gear (P, R, N, D, B, C)**                   | **—**         | **418**  | **Byte(0) Decimal: P=80, R=82, N=78, D=68, B=131 C=50**                                   | 8     |
+| **Gear (P, R, N, D, B, C)**                   | **—**         | **418**  | **Byte(0) Decimal: P=80, R=82, N=78, D=68, B=131 C=50**  | 8     |
 | **Insulation fault**                   | —         | **5A1**  | **Byte(0) No fault: 00(HEX) New fault: 30,3C?,34? No fault, but saved faultcode: 14 New fault with saved fault: 1C?**|   |
 | Key on (ready and not ready)     | on/off    | 412  | if(byte(0)=254) then on(1) else off(0)                                            |       |
 | Lights front fog                 | on/off    | 424  | byte(0) bit 8                                                   |       |
@@ -229,7 +229,7 @@ The regen-current on the other hand is changeable according to the above shown l
 
 Be carfull if you for example change the regen-current from 125A to 0A very quickly, because the change feels not very smooth. In addition the driving becomes unsafe then, because the regen-braking takes place on the first half of the brakepedal movement and then kicks in the mechanical brake. So if you change the regen-current quickly you have to press the pedal even more to get the same braking performance -> it can be irritating while driving. 
 
-### Simulate the ESP/ABS-ECU
+### Simulating the ESP/ABS-ECU
 For our conversion we tried to eliminate all sensors and devices, which we don't need. The VW T2 has ne ABS or ESP so we did not install the ECU (which is included in the valve-block). The car worked with hat, but has very reduced power and works in a kind of "emergency-mode". To solve that problem, I copied the CAN-messages from a original Citroen C-Zero and put them in the CAN-Bus of the Bus -> now the car has full power :) 
 
 |CAN-message HEX|byte 0|byte 1|byte 2|byte 3|byte 4|byte 5|byte 6|byte 7| 
@@ -240,3 +240,9 @@ For our conversion we tried to eliminate all sensors and devices, which we don't
 |215|0|0|0|166|0|165|0|0|
 |231|0|0|0|0|2|0|0|0|
 |300|0|27|31|255|135|208|255|255|
+
+
+### Enable "soft-start" without the ESP/ABS-ECU
+If you don't have the ESP/ABS-ECU installed on your vehicle (see chapter "Simulating the ESP/ABS-ECU"), the brakefluid-pressure sensor is missing. But this sensor is used so raise the engine-power when you release the brake pedal that your car starts rolling. Without this sensor the car always raises the power instantly, when you shift to R, D, B or C. You could change the byte 3 of the CAN-Bus message 208, but then a hill start is more difficult. 
+
+My idea now is to use the potentiometer on the brakepedal, which seems to be used for regulating the regen power. For that I will build an adapter, which I can plug between the brake poti and the plug. I will read the analog signal and then generate PID 208 with the (hopefully?!) correct value. I will add the results, when the experiment is done!
