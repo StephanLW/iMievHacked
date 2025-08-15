@@ -167,6 +167,15 @@ Bytes are counted from byte 0 to byte 7
 | Steering wheel position             | degrees   | 236  | 566  | (byte(0) * 256 + byte(1) - 4096) / 30.0                         | 1     |
 | Windshield wipers             | on/off   | 424  | 1060  | byte(1) bit 8                         | 1     |
 
+## ECUs
+### BMU
+The pin assignment of the BMU looks like this: 
+<img width="849" height="303" alt="BMU C-107" src="https://github.com/user-attachments/assets/f2e98a03-df84-40af-8c32-7e0141fb910a" />
+
+<img width="720" height="337" alt="BMU C-109" src="https://github.com/user-attachments/assets/86edd2f0-4035-4636-9092-fc213a05f7d7" />
+
+
+
 ## Technical tools
 
 ### CAN-Bridge
