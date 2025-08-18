@@ -199,7 +199,8 @@ TIPP: I first tried to use the DVDs to install the cracked software but it was n
 ![proxy-image](https://github.com/user-attachments/assets/d217e09e-a6c6-4f8c-8634-b439c0cce99d)
 
 
-For Mitsubishi you need the MUT-3 device. I have no experiences with this system. 
+For Mitsubishi you need (?) the MUT-3 device. I have no experiences with this system. Update: I read, that the Diagbox/Lexia also works with the Mitsubishi. I have not confirmed that, because I don`t have a i-Miev to test it. 
+
 
 ## Hacking/Customisation
 
