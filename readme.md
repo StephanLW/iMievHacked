@@ -129,7 +129,7 @@ Bytes are counted from byte 0 to byte 7
 | Chademo connected                   | on/off    | 697  | 1687  | byte(0)                                                         |       |
 | Chademo current                     | amps      | 697  | 1687  | byte(2)                                                         |       |
 | Chademo percent                     | %         | 697  | 1687  | byte(1)                                                         |       |
-| Charging 12V battery (high voltage) | amps      | 384  | 900  | byte(3) / 100.0                                                   | 2     |
+| Charging 12V battery (high voltage) | amps      | 384?  | 900?  | byte(3) / 100.0 ??                                                   | 2     |
 | Charging unit amps from mains        | amps      | 389  | 905  | byte(6) / 10.0                                                         |       |
 | Charging unit amps to battery      | amps      | 389  | 905  | byte(2) / 10.0                                                         |       |
 | Charging unit temperature 1        | °C        | 389  | 905  | byte(3) - 50.0                                                  |       |
