@@ -230,6 +230,14 @@ The regen-current on the other hand is changeable according to the above shown l
 
 Be carfull if you for example change the regen-current from 125A to 0A very quickly, because the change feels not very smooth. In addition the driving becomes unsafe then, because the regen-braking takes place on the first half of the brakepedal movement and then kicks in the mechanical brake. So if you change the regen-current quickly you have to press the pedal even more to get the same braking performance -> it can be irritating while driving. 
 
+### Simulate BMS
+If you want to use your own BMS System and get rid of the BMU, you can simulate it by sending the correct CAN-Messages to the main CAN-Bus. 
+Just disconnect the two plugs of the BMU and connect an (for example) arduino-Can-Shield to the CAN Low and CAN High of the vehicle. Don't forget the ground!
+The following Messages are at least necessary: 373, 374, 375 and 5A1 (HEX). The individual cell-voltages are not necessary (6E1, 6E2, 6E3, 6E4).
+
+
+Be careful: The BMU is precessing the signals of the insulation monitoring device. If you remove the BMU there will be no more insulation monitoring!!!
+
 ### Simulating the ESP/ABS-ECU
 For our conversion we tried to eliminate all sensors and devices, which we don't need. The VW T2 has ne ABS or ESP so we did not install the ECU (which is included in the valve-block). The car worked with hat, but has very reduced power and works in a kind of "emergency-mode". To solve that problem, I copied the CAN-messages from a original Citroen C-Zero and put them in the CAN-Bus of the Bus -> now the car has full power :) 
 
