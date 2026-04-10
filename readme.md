@@ -234,9 +234,13 @@ Be carfull if you for example change the regen-current from 125A to 0A very quic
 If you want to use your own BMS System and get rid of the BMU, you can simulate it by sending the correct CAN-Messages to the main CAN-Bus. 
 Just disconnect the two plugs of the BMU and connect an (for example) arduino-Can-Shield to the CAN Low and CAN High of the vehicle. Don't forget the ground!
 The following Messages are at least necessary: 373, 374, 375 and 5A1 (HEX). The individual cell-voltages are not necessary (6E1, 6E2, 6E3, 6E4).
+See 20260410_CAN_Simulate_BMU.ino above. The code has to be changed to fit your needs. That is just an example to use as a start for further developement. With this code the battery is not protected against overcharge, overdischarge, over- or underheating. You have to implement that yourself :)
+
 
 
 Be careful: The BMU is precessing the signals of the insulation monitoring device. If you remove the BMU there will be no more insulation monitoring!!!
+One more safety advice: The K-Line which is used to communicate directly between BMU and EV-ECU is not in use anymore. I have not investigated further, but when the CAN-Communicaton between these two ECUs is not working, the K-Line is used to keep the car going. 
+Without a K-Line, the car may stop directly, if the CAN-Communication is disturbed. So be careful!!
 
 ### Simulating the ESP/ABS-ECU
 For our conversion we tried to eliminate all sensors and devices, which we don't need. The VW T2 has ne ABS or ESP so we did not install the ECU (which is included in the valve-block). The car worked with hat, but has very reduced power and works in a kind of "emergency-mode". To solve that problem, I copied the CAN-messages from a original Citroen C-Zero and put them in the CAN-Bus of the Bus -> now the car has full power :) 
