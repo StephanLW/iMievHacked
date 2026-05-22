@@ -242,6 +242,21 @@ Be careful: The BMU is precessing the signals of the insulation monitoring devic
 One more safety advice: The K-Line which is used to communicate directly between BMU and EV-ECU is not in use anymore. I have not investigated further, but when the CAN-Communicaton between these two ECUs is not working, the K-Line is used to keep the car going. 
 Without a K-Line, the car may stop directly, if the CAN-Communication is disturbed. So be careful!!
 
+#### Operating Limits
+
+In the following table are shown the most important values for simulating the BMU with operating limits.
+IN PROGRESS!
+| Variable                         | Unit     |Range     | Description                                  | Notes |
+|-------------------------------------|------|-----|------|------|
+|Max. cell voltage| V |2.75-4.10 (4.12)|While charging, the voltage never exceeds 4.10 Volt. While recuperating the voltage sometimes rises to 4.12 V|-|
+|Min. cell voltage| V |2.75-4.10 (4.12)|If the Voltage drops to 2.75 V, the power is reduced|-|
+|Max. temperature| °C |?|?|-|
+|Min. temperature| °C |?|?|-|
+|Total Voltage| V |?-370 (?)|The AC-charger has a programmed max. voltage of 370 V (on cars with 88 cell battery pack). Furthermore the total Voltage is used to check, if the precharge was successfully. If the value is below the measured voltage of the Inverter, the car started. I tried it with a simulated voltage of 180 V and it worked fine |-|
+|SOC 1 and 2| % |0-100|The turle mode starts below 8%. On 0% the car shuts down the contactors|-|
+|Insulation fault detection| - |?|?|-|
+
+
 ### Simulating the ESP/ABS-ECU
 For our conversion we tried to eliminate all sensors and devices, which we don't need. The VW T2 has ne ABS or ESP so we did not install the ECU (which is included in the valve-block). The car worked with hat, but has very reduced power and works in a kind of "emergency-mode". To solve that problem, I copied the CAN-messages from a original Citroen C-Zero and put them in the CAN-Bus of the Bus -> now the car has full power :) 
 
